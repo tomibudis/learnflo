@@ -189,7 +189,6 @@ const HomePage = () => {
           </div>
         </div>
       </nav>
-      helloworld
       {/* Mobile Menu */}
       <div
         className={`fixed top-16 left-0 right-0 z-40 transform transition-all duration-200 ${
