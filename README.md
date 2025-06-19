@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Learnflo: Mini Course Platform
 
-## Getting Started
+A modern, production-grade Mini Course Platform — thoughtfully crafted to showcase software development best practices using today’s most powerful web tools.
 
-First, run the development server:
+---
+
+## 🚀 Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧱 Folder Structure
 
-## Learn More
+```
+/app         # Next.js app directory (routing, pages)
+/components  # Reusable UI components (Shadcn UI, etc.)
+/lib         # Utilities and helpers (e.g. cn, fetchers)
+/hooks       # Custom React hooks
+/types       # TypeScript types
+/styles      # Global and modular styles
+/config      # App configuration (env, constants)
+/tests       # Unit and integration tests
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💎 Code Quality & Tooling
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **TypeScript** for type safety
+- **ESLint** (Next.js, TypeScript, Tailwind plugins)
+- **Prettier** (integrated with ESLint)
+- **Husky** + **lint-staged** (pre-commit hooks)
+- **Commitlint** (enforce Conventional Commits)
+- **Vitest** + **Testing Library** + **MSW** (unit & integration tests)
+- **Absolute imports** via `@/`
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧪 Testing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Run all tests: `npm test`
+- Add tests in `/src/tests` or `/tests`
+- Mock APIs with MSW
+
+---
+
+## 🧰 Useful Scripts
+
+```json
+{
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint",
+  "format": "prettier --write .",
+  "test": "vitest",
+  "type-check": "tsc --noEmit",
+  "prepare": "husky install"
+}
+```
+
+---
+
+## 🧑‍💻 Contributing
+
+- Fork & clone the repo
+- Create a feature branch
+- Use [Conventional Commits](https://www.conventionalcommits.org/)
+- Run `npm run lint` and `npm test` before pushing
+- Open a PR with a clear description
+
+---
+
+## 📝 Commit Message Guidelines
+
+- Use [Conventional Commits](https://www.conventionalcommits.org/)
+- Example: `feat(auth): add login with Supabase`
+
+---
+
+## 🌐 Tech Stack
+
+- **Frontend:** Next.js (App Router), Tailwind CSS, Shadcn UI
+- **Backend:** Supabase (DB, Auth, Storage)
+- **Optional AI:** OpenAI or Claude for content generation
+- **Deployment:** Vercel
+- **CI/CD:** GitHub Actions
+
+---
+
+## 📦 Features
+
+- Auth system (Supabase)
+- Course browsing & pages
+- Progress tracking
+- Admin panel
+- Dark mode & responsive UI
+- Reusable UI system (Shadcn UI)
+- AI enhancements (optional)
+- Production-ready stack
+
+---
+
+## 📄 License
+
+MIT
+
+---
+
+## 🙏 Credits
+
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Shadcn UI](https://ui.shadcn.com/)
+- [Supabase](https://supabase.com/)
+- [Vercel](https://vercel.com/)
+
+---
+
+> Built as a public dev challenge to showcase best practices and modern web development.
