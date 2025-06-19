@@ -6,22 +6,52 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "test": "vitest",
+    "type-check": "tsc --noEmit",
+    "prepare": "husky install"
   },
   "dependencies": {
+    "jsdom": "^26.1.0",
+    "lucide-react": "^0.517.0",
+    "next": "15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.3.3"
+    "tailwindcss": "^4.1.10"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "@commitlint/cli": "^19",
+    "@commitlint/config-conventional": "^19",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4.1.10",
+    "@testing-library/jest-dom": "^6",
+    "@testing-library/react": "^15",
+    "@testing-library/user-event": "^14",
+    "@types/react": "18.3.23",
+    "@typescript-eslint/eslint-plugin": "^7",
+    "@typescript-eslint/parser": "^7",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
-    "@eslint/eslintrc": "^3"
+    "eslint-config-prettier": "^9",
+    "eslint-plugin-prettier": "^5",
+    "eslint-plugin-tailwindcss": "^3",
+    "husky": "^9",
+    "lint-staged": "^15",
+    "msw": "^2",
+    "prettier": "^3",
+    "typescript": "^5",
+    "vitest": "^1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css,md,json}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
