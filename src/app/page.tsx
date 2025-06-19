@@ -189,7 +189,7 @@ const HomePage = () => {
           </div>
         </div>
       </nav>
-
+      helloworld
       {/* Mobile Menu */}
       <div
         className={`fixed top-16 left-0 right-0 z-40 transform transition-all duration-200 ${
@@ -214,7 +214,6 @@ const HomePage = () => {
           </button>
         </div>
       </div>
-
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
@@ -277,7 +276,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       {/* Stats Section */}
       <section className="py-16 px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
@@ -299,7 +297,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       {/* About Section */}
       <section id="about" className="py-20 px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
@@ -356,7 +353,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       {/* Features Section */}
       <section id="features" className="py-20 px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
@@ -405,7 +401,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       {/* Testimonials Section */}
       <section id="testimonials" className="py-20 px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
@@ -456,7 +451,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       {/* CTA Section */}
       <section
         id="animate-cta"
@@ -486,7 +480,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       {/* Footer */}
       <footer
         className={`py-12 px-6 lg:px-8 border-t ${isDarkMode ? 'border-gray-800' : 'border-gray-200'}`}
