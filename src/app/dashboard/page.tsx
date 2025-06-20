@@ -544,7 +544,6 @@ const Dashboard: React.FC = () => {
                 </div>
               </Card>
             </div>
-
             {/* Right Column - Mobile Dashboard Preview */}
             <div className="space-y-6">
               <Card className="p-6">
