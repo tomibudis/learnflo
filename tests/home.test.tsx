@@ -1,12 +1,10 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Home from '../src/app/page';
-import { describe, it, expect } from 'vitest';
-import '@testing-library/jest-dom';
+import DashboardPage from '@/app/dashboard/page';
 
-describe('Home Page', () => {
-  it('renders the welcome heading', () => {
-    render(<Home />);
-    expect(screen.getByTestId('home-title')).toHaveTextContent('Welcome to Learnflo!');
+describe('DashboardPage', () => {
+  it('renders dashboard heading', () => {
+    render(<DashboardPage />);
+    const headings = screen.getAllByText(/Dashboard/i);
+    expect(headings.length).toBeGreaterThan(0);
   });
 });
