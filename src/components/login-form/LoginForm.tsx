@@ -11,7 +11,6 @@ import { Label } from '@/components/ui/Label';
 import { FieldErrorMessage } from '@/components/ui/FieldErrorMessage';
 import { GoogleIcon } from '@/components/login-form/GoogleIcon';
 import { PasswordInput } from '@/components/ui/PasswordInput';
-import { supabase } from '@/lib/supabase';
 import { toast } from 'sonner';
 
 const loginSchema = z.object({
@@ -38,12 +37,14 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
   });
 
   const onSubmit = async (data: LoginFormValues) => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email: data.email,
-      password: data.password,
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: data.email, password: data.password }),
     });
-    if (!error) onSuccess?.(data);
-    else toast(error.message);
+    const result = await res.json();
+    if (res.ok) onSuccess?.(data);
+    else toast(result.error);
   };
 
   return (

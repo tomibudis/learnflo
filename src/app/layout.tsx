@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/Sooner';
+import { UserProvider } from '@/context/UserProvider';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -29,8 +30,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} `}>
-        <main>{children}</main>
+      <body className={`${inter.variable} ${jetbrainsMono.variable}`}>
+        <main>
+          <UserProvider>{children}</UserProvider>
+        </main>
         <Toaster />
       </body>
     </html>

@@ -1,4 +1,4 @@
-import TestimonialCarousel from '@/app/(auth)/TestimonialCarousel';
+import TestimonialCarousel from '@/app/(non-auth)/TestimonialCarousel';
 import React from 'react';
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
