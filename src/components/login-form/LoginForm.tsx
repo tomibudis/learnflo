@@ -11,6 +11,7 @@ import { Label } from '@/components/ui/label';
 import { FieldErrorMessage } from '@/components/ui/field-error-message';
 import { GoogleIcon } from '@/components/login-form/GoogleIcon';
 import { PasswordInput } from '@/components/ui/password-input';
+import { login } from '@/app/(non-auth)/login/actions';
 import { toast } from 'sonner';
 
 const loginSchema = z.object({
@@ -20,15 +21,11 @@ const loginSchema = z.object({
 });
 export type LoginFormValues = z.infer<typeof loginSchema>;
 
-interface LoginFormProps {
-  onSuccess?: (data: LoginFormValues) => void;
-}
-
-export function LoginForm({ onSuccess }: LoginFormProps) {
+export function LoginForm() {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: { email: '', password: '', rememberMe: false },
@@ -36,19 +33,14 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
     reValidateMode: 'onChange',
   });
 
-  const onSubmit = async (data: LoginFormValues) => {
-    const res = await fetch('/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: data.email, password: data.password }),
-    });
-    const result = await res.json();
-    if (res.ok) onSuccess?.(data);
-    else toast(result.error);
+  const onSubmitForm = async (formValues: LoginFormValues) => {
+    const { error } = await login({ email: formValues.email, password: formValues.password });
+    if (error.message) {
+      toast(error.message);
+    }
   };
-
   return (
-    <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+    <form className="space-y-6" onSubmit={handleSubmit(onSubmitForm)}>
       <Controller
         name="email"
         control={control}
@@ -95,7 +87,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
           </div>
         )}
       />
-      <Button type="submit" className="w-full">
+      <Button type="submit" className="w-full" loading={isSubmitting}>
         Sign in
       </Button>
       <Button variant="outline" className="w-full" type="button">

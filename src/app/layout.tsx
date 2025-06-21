@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
 import { UserProvider } from '@/context/UserProvider';
+import { ThemeProvider } from 'next-themes';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -31,9 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${jetbrainsMono.variable}`}>
-        <main>
-          <UserProvider>{children}</UserProvider>
-        </main>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <main>
+            <UserProvider>{children}</UserProvider>
+          </main>
+        </ThemeProvider>
         <Toaster />
       </body>
     </html>

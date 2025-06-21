@@ -12,9 +12,8 @@ import { FieldErrorMessage } from '@/components/ui/field-error-message';
 import { PasswordInput } from '@/components/ui/password-input';
 import { GoogleIcon } from '@/components/login-form/GoogleIcon';
 import { toast } from 'sonner';
-import { supabase } from '@/lib/supabase';
+import { signup } from '@/app/(non-auth)/signup/actions';
 
-// Supabase auth table fields: email, password, (optionally: full_name, phone, etc.)
 const signupSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address.' }),
   password: z.string().min(6, { message: 'Password must be at least 6 characters.' }),
@@ -26,11 +25,7 @@ const signupSchema = z.object({
 });
 export type SignUpFormValues = z.infer<typeof signupSchema>;
 
-interface SignUpFormProps {
-  onSuccess?: (data: SignUpFormValues) => void;
-}
-
-export function SignUpForm({ onSuccess }: SignUpFormProps) {
+export function SignUpForm() {
   const {
     control,
     handleSubmit,
@@ -43,7 +38,7 @@ export function SignUpForm({ onSuccess }: SignUpFormProps) {
   });
 
   const onSubmit = async (data: SignUpFormValues) => {
-    const { error } = await supabase.auth.signUp({
+    const { error } = await signup({
       email: data.email,
       password: data.password,
       phone: data.phone,
@@ -53,8 +48,9 @@ export function SignUpForm({ onSuccess }: SignUpFormProps) {
         },
       },
     });
-    if (!error) onSuccess?.(data);
-    else toast(error.message);
+    if (error) {
+      toast(error.message);
+    }
   };
 
   return (
