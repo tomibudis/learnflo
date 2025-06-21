@@ -1,6 +1,6 @@
 import React from 'react';
 import { Eye, EyeOff } from 'lucide-react';
-import { Input } from '@/components/ui/Input';
+import { Input } from '@/components/ui/input';
 
 export interface PasswordInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   showPassword?: boolean;

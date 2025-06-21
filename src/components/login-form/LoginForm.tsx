@@ -4,13 +4,13 @@ import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/Input';
-import { Checkbox } from '@/components/ui/Checkbox';
-import { Label } from '@/components/ui/Label';
-import { FieldErrorMessage } from '@/components/ui/FieldErrorMessage';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
+import { FieldErrorMessage } from '@/components/ui/field-error-message';
 import { GoogleIcon } from '@/components/login-form/GoogleIcon';
-import { PasswordInput } from '@/components/ui/PasswordInput';
+import { PasswordInput } from '@/components/ui/password-input';
 import { toast } from 'sonner';
 
 const loginSchema = z.object({
@@ -28,7 +28,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: { email: '', password: '', rememberMe: false },
@@ -95,7 +95,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
           </div>
         )}
       />
-      <Button type="submit" className="w-full" isLoading={isSubmitting}>
+      <Button type="submit" className="w-full">
         Sign in
       </Button>
       <Button variant="outline" className="w-full" type="button">

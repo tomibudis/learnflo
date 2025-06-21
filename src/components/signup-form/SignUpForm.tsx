@@ -4,12 +4,12 @@ import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/Input';
-import { Checkbox } from '@/components/ui/Checkbox';
-import { Label } from '@/components/ui/Label';
-import { FieldErrorMessage } from '@/components/ui/FieldErrorMessage';
-import { PasswordInput } from '@/components/ui/PasswordInput';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
+import { FieldErrorMessage } from '@/components/ui/field-error-message';
+import { PasswordInput } from '@/components/ui/password-input';
 import { GoogleIcon } from '@/components/login-form/GoogleIcon';
 import { toast } from 'sonner';
 import { supabase } from '@/lib/supabase';
@@ -34,7 +34,7 @@ export function SignUpForm({ onSuccess }: SignUpFormProps) {
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<SignUpFormValues>({
     resolver: zodResolver(signupSchema),
     defaultValues: { email: '', password: '', full_name: '', phone: '', agree: false },
@@ -116,7 +116,7 @@ export function SignUpForm({ onSuccess }: SignUpFormProps) {
           </div>
         )}
       />
-      <Button type="submit" className="w-full" isLoading={isSubmitting}>
+      <Button type="submit" className="w-full">
         Sign up
       </Button>
       <Button variant="outline" className="w-full" type="button">

@@ -5,13 +5,11 @@ import {
   IconCamera,
   IconChartBar,
   IconDashboard,
-  IconDatabase,
   IconFileAi,
   IconFileDescription,
   IconFileWord,
   IconFolder,
   IconHelp,
-  IconInnerShadowTop,
   IconListDetails,
   IconReport,
   IconSearch,
@@ -29,7 +27,6 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 
@@ -42,11 +39,11 @@ const data = {
   navMain: [
     {
       title: 'Dashboard',
-      url: '#',
+      url: '/dashboard',
       icon: IconDashboard,
     },
     {
-      title: 'Lifecycle',
+      title: 'Transactions',
       url: '#',
       icon: IconListDetails,
     },
@@ -56,12 +53,12 @@ const data = {
       icon: IconChartBar,
     },
     {
-      title: 'Projects',
+      title: 'Courses',
       url: '#',
       icon: IconFolder,
     },
     {
-      title: 'Team',
+      title: 'Users',
       url: '#',
       icon: IconUsers,
     },
@@ -84,7 +81,7 @@ const data = {
       ],
     },
     {
-      title: 'Proposal',
+      title: 'Site settings',
       icon: IconFileDescription,
       url: '#',
       items: [
@@ -133,17 +130,12 @@ const data = {
   ],
   documents: [
     {
-      name: 'Data Library',
-      url: '#',
-      icon: IconDatabase,
-    },
-    {
-      name: 'Reports',
+      name: 'Site',
       url: '#',
       icon: IconReport,
     },
     {
-      name: 'Word Assistant',
+      name: 'AI Assistant',
       url: '#',
       icon: IconFileWord,
     },
@@ -156,12 +148,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-1.5">
-              <a href="#">
-                <IconInnerShadowTop className="!size-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
-              </a>
-            </SidebarMenuButton>
+            <div className="flex items-center">
+              <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center mr-3">
+                <div className="w-4 h-4 bg-white rounded-sm"></div>
+              </div>
+              <span className="text-xl font-semibold text-gray-900">Learnflo</span>
+            </div>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
