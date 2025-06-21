@@ -1,13 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import {
-  IconChartBar,
-  IconDashboard,
-  IconFolder,
-  IconListDetails,
-  IconUsers,
-} from '@tabler/icons-react';
 
 import { NavMain } from '@/components/app-sidebar/nav-main';
 import { NavUser } from '@/components/app-sidebar/nav-user';
@@ -19,7 +12,7 @@ import {
   SidebarMenu,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { Settings2 } from 'lucide-react';
+import { DASHBOARD_MENU } from '@/components/app-sidebar/constants';
 
 const data = {
   user: {
@@ -27,38 +20,7 @@ const data = {
     email: 'm@example.com',
     avatar: '/avatars/shadcn.jpg',
   },
-  navMain: [
-    {
-      title: 'Dashboard',
-      url: '/dashboard',
-      icon: IconDashboard as React.ElementType,
-    },
-    {
-      title: 'Transactions',
-      url: '#',
-      icon: IconListDetails as React.ElementType,
-    },
-    {
-      title: 'Analytics',
-      url: '#',
-      icon: IconChartBar as React.ElementType,
-    },
-    {
-      title: 'Courses',
-      url: '#',
-      icon: IconFolder as React.ElementType,
-    },
-    {
-      title: 'Users',
-      url: '#',
-      icon: IconUsers as React.ElementType,
-    },
-    {
-      title: 'Settings',
-      url: '#',
-      icon: Settings2 as React.ElementType,
-    },
-  ],
+  navMain: DASHBOARD_MENU,
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {

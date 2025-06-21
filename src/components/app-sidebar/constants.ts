@@ -1,34 +1,41 @@
-import { BarChart3, Book, ChartNoAxesCombined, DollarSignIcon, Settings, User } from 'lucide-react';
+import {
+  IconChartBar,
+  IconDashboard,
+  IconFolder,
+  IconListDetails,
+  IconUsers,
+} from '@tabler/icons-react';
+import { Settings2 } from 'lucide-react';
 
-export const ADMIN_MENU = [
+export const DASHBOARD_MENU = [
   {
     title: 'Dashboard',
     url: '/dashboard',
-    icon: BarChart3,
-  },
-  {
-    title: 'User management',
-    url: '#',
-    icon: User,
-  },
-  {
-    title: 'Course management',
-    url: '#',
-    icon: Book,
+    icon: IconDashboard as React.ElementType,
   },
   {
     title: 'Transactions',
-    url: '#',
-    icon: DollarSignIcon,
-  },
-  {
-    title: 'Site settings',
-    url: '#',
-    icon: Settings,
+    url: '/transactions',
+    icon: IconListDetails as React.ElementType,
   },
   {
     title: 'Reports & Analytics',
-    url: '#',
-    icon: ChartNoAxesCombined,
+    url: '/reports',
+    icon: IconChartBar as React.ElementType,
+  },
+  {
+    title: 'Courses',
+    url: '/courses',
+    icon: IconFolder as React.ElementType,
+  },
+  {
+    title: 'Users',
+    url: '/users',
+    icon: IconUsers as React.ElementType,
+  },
+  {
+    title: 'Settings',
+    url: '/settings',
+    icon: Settings2 as React.ElementType,
   },
 ];
