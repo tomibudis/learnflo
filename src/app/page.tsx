@@ -24,6 +24,8 @@ import {
   MobileNavMenu,
 } from '@/components/ui/resizable-navbar';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { BackgroundCircles } from '@/components/ui/background-circle';
+import { GlowingEffectDemo } from '@/components/features';
 
 const HomePage = () => {
   const navItems = [
@@ -104,7 +106,7 @@ const HomePage = () => {
 
         {/* Hero Section */}
         <HeroSection
-          title="Welcome to Our Platform"
+          title="#Indonesia's Fastest-Growing EdTech Platform 🇮🇩"
           subtitle={{
             regular: 'Transform your knowledge into ',
             gradient: 'beautiful digital experiences',
@@ -116,32 +118,14 @@ const HomePage = () => {
             light: '/dashboard-page-light.png',
             dark: '/dashboard-page-dark.png',
           }}
-          gridOptions={{
-            angle: 40,
-            opacity: 0.4,
-            cellSize: 50,
-            lightLineColor: '#4a4a4a',
-            darkLineColor: '#2a2a2a',
-          }}
         />
 
         {/* About Section */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                Empower Individual Educators
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                This isn&apos;t just another LMS. It&apos;s built for solo creators, coaches, or
-                anyone who wants to teach in their own style.
-                <span className="text-blue-600 font-medium"> No gatekeepers, no limitations</span> –
-                just you and your students.
-              </p>
-            </div>
-          </div>
-        </section>
+        <BackgroundCircles variant="lime" title="Empower Individual Educators" />
 
+        <div className="container flex justify-center items-center mx-auto py-48">
+          <GlowingEffectDemo />
+        </div>
         {/* Features Section */}
         <section className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

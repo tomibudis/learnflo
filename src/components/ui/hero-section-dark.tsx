@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import * as React from 'react';
 import { cn } from '@/lib/utils';
-import { ChevronRight } from 'lucide-react';
+
+import { motion } from 'framer-motion';
 
 interface HeroSectionProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
@@ -16,46 +17,7 @@ interface HeroSectionProps extends React.HTMLAttributes<HTMLDivElement> {
     light: string;
     dark: string;
   };
-  gridOptions?: {
-    angle?: number;
-    cellSize?: number;
-    opacity?: number;
-    lightLineColor?: string;
-    darkLineColor?: string;
-  };
 }
-
-const RetroGrid = ({
-  angle = 65,
-  cellSize = 80,
-  opacity = 0.1,
-  lightLineColor = 'gray',
-  darkLineColor = 'gray',
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-}: any) => {
-  const gridStyles = {
-    '--grid-angle': `${angle}deg`,
-    '--cell-size': `${cellSize}px`,
-    '--opacity': opacity,
-    '--light-line': lightLineColor,
-    '--dark-line': darkLineColor,
-  } as React.CSSProperties;
-
-  return (
-    <div
-      className={cn(
-        'pointer-events-none absolute size-full overflow-hidden [perspective:200px]',
-        `opacity-[var(--opacity)]`,
-      )}
-      style={gridStyles}
-    >
-      <div className="absolute inset-0 [transform:rotateX(var(--grid-angle))]">
-        <div className="animate-grid [background-image:linear-gradient(to_right,var(--light-line)_1px,transparent_0),linear-gradient(to_bottom,var(--light-line)_1px,transparent_0)] [background-repeat:repeat] [background-size:var(--cell-size)_var(--cell-size)] [height:300vh] [inset:0%_0px] [margin-left:-200%] [transform-origin:100%_0_0] [width:600vw] dark:[background-image:linear-gradient(to_right,var(--dark-line)_1px,transparent_0),linear-gradient(to_bottom,var(--dark-line)_1px,transparent_0)]" />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent to-90% dark:from-black" />
-    </div>
-  );
-};
 
 const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
   (
@@ -74,28 +36,62 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
           'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80',
         dark: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80',
       },
-      gridOptions,
       ...props
     },
     ref,
   ) => {
+    const [titleNumber, setTitleNumber] = React.useState(0);
+    const titles = React.useMemo(
+      () => ['amazing knowledge', 'wonderful user interface', 'beautiful digital experience'],
+      [],
+    );
+
+    React.useEffect(() => {
+      const timeoutId = setTimeout(() => {
+        if (titleNumber === titles.length - 1) {
+          setTitleNumber(0);
+        } else {
+          setTitleNumber(titleNumber + 1);
+        }
+      }, 2000);
+      return () => clearTimeout(timeoutId);
+    }, [titleNumber, titles]);
+
     return (
       <div className={cn('relative', className)} ref={ref} {...props}>
         <div className="absolute top-0 z-[0] h-screen w-screen dark:bg-lime-950/10 bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(132,204,22,0.15),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(163,230,53,0.3),rgba(255,255,255,0))]" />
         <section className="relative max-w-full mx-auto z-1">
-          <RetroGrid {...gridOptions} />
-          <div className="max-w-screen-xl z-10 mx-auto px-4 py-48 gap-12 md:px-8">
+          <div className="max-w-screen-xl z-10 mx-auto px-4 pt-48 pb-20 gap-12 md:px-8">
             <div className="space-y-5 max-w-3xl leading-0 lg:leading-5 mx-auto text-center">
-              <h1 className="text-sm text-gray-600 dark:text-gray-400 group font-geist mx-auto px-5 py-2 bg-gradient-to-tr from-zinc-300/20 via-gray-400/20 to-transparent dark:from-zinc-300/5 dark:via-gray-400/5 border-[2px] border-black/5 dark:border-white/5 rounded-3xl w-fit">
+              <h1 className="gap-1 text-sm text-gray-600 dark:text-gray-400 group font-geist mx-auto px-5 py-2 bg-gradient-to-tr from-zinc-300/20 via-gray-400/20 to-transparent dark:from-zinc-300/5 dark:via-gray-400/5 border-[2px] border-black/5 dark:border-white/5 rounded-3xl w-fit flex items-center">
                 {title}
-                <ChevronRight className="inline w-4 h-4 ml-2 group-hover:translate-x-1 duration-300" />
               </h1>
-              <h2 className="text-4xl tracking-tighter font-geist bg-clip-text text-transparent mx-auto md:text-6xl bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
-                {subtitle.regular}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-500 to-lime-300 dark:from-lime-300 dark:to-lime-500">
-                  {subtitle.gradient}
+              <h1
+                className="text-4xl 
+              md:text-6xl tracking-tighter text-center font-regular"
+              >
+                <span className="text-spektr-cyan-50">{subtitle.regular}</span>
+                <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1">
+                  &nbsp;
+                  {titles.map((title, index) => (
+                    <motion.span
+                      key={index}
+                      className="absolute font-semibold"
+                      initial={{ opacity: 0, y: '-100' }}
+                      transition={{ type: 'spring', stiffness: 50 }}
+                      animate={
+                        titleNumber === index
+                          ? { y: 0, opacity: 1 }
+                          : { y: titleNumber > index ? -150 : 150, opacity: 0 }
+                      }
+                    >
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-500 to-lime-300 dark:from-lime-300 dark:to-lime-500">
+                        {title}
+                      </span>
+                    </motion.span>
+                  ))}
                 </span>
-              </h2>
+              </h1>
               <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">{description}</p>
               <div className="items-center justify-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
                 <span className="relative inline-block overflow-hidden rounded-full p-[1.5px]">
