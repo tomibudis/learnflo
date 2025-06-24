@@ -202,26 +202,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Global typography styles for headings and paragraphs */
-h1 {
-  @apply text-3xl font-bold mb-2;
-}
-h2 {
-  @apply text-2xl font-bold mb-2;
-}
-h3 {
-  @apply text-xl font-semibold mb-2;
-}
-h4 {
-  @apply text-lg font-semibold;
-}
-h5 {
-  @apply text-base font-semibold;
-}
-h6 {
-  @apply text-sm font-semibold;
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
