@@ -25,7 +25,7 @@ import {
 } from '@/components/ui/resizable-navbar';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { BackgroundCircles } from '@/components/ui/background-circle';
-import { GlowingEffectDemo } from '@/components/features';
+import { Features } from '@/components/blocks/features-11';
 
 const HomePage = () => {
   const navItems = [
@@ -123,9 +123,9 @@ const HomePage = () => {
         {/* About Section */}
         <BackgroundCircles variant="lime" title="Empower Individual Educators" />
 
-        <div className="container flex justify-center items-center mx-auto py-48">
-          <GlowingEffectDemo />
-        </div>
+        {/* <div className="container flex justify-center items-center mx-auto py-48"> */}
+        <Features />
+        {/* </div> */}
         {/* Features Section */}
         <section className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
