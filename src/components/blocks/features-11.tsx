@@ -7,7 +7,7 @@ export function Features() {
     <>
       <section className="dark:bg-muted/25 bg-zinc-50 py-16 md:py-32">
         <div className="mb-12">
-          <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl">Features</h2>
+          <h2 className="text-center text-3xl font-medium tracking-tight sm:text-4xl">Features</h2>
           <p className="mx-auto mt-2 max-w-2xl text-center text-muted-foreground">
             Our platform is designed to give you complete control over your courses, from content
             creation to student engagement.
